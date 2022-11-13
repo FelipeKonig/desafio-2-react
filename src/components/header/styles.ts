@@ -9,23 +9,27 @@ export const HeaderContainer = styled.div`
 
   nav {
     display: inline-flex;
-    gap: 12px;
+    gap: 4px;
   }
 
   span {
     background-color: ${(props) => props.theme['purple-light']};
     color: ${(props) => props.theme['purple-dark']};
-    border-radius: 16px;
-    padding: 0.875rem;
+    border-radius: 6px;
+    padding: 0.5rem;
     display: inline-flex;
-    gap: 2px;
     align-items: center;
   }
 
   a {
     background-color: ${(props) => props.theme['yellow-light']};
     color: ${(props) => props.theme['yellow-dark']};
-    border-radius: 16px;
-    padding: 0.875rem;
+    border-radius: 6px;
+    padding: 0.5rem;
+
+    &:hover {
+      color: ${(props) => props.theme.white};
+      background-color: ${(props) => props.theme['yellow-dark']};
+    }
   }
 `
