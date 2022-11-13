@@ -7,6 +7,10 @@ export const HeaderContainer = styled.div`
 
   padding: 1.5rem;
 
+  @media only screen and (max-width: 900px) {
+    padding-top: 0.5rem;
+  }
+
   nav {
     display: inline-flex;
     gap: 4px;
