@@ -1,47 +1,47 @@
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import {
-  HeaderContainer,
-  ImgContainer,
-  IntroContainer,
-  ItemsContainer,
-  TitleContainer,
-} from './styles'
+import { Header } from './Header'
+import { BuyContainer, CoffeeCard, CoffeeList, List } from './styles'
 
-import titleCover from '../../assets/titleCover.png'
+import coffee1 from '../../assets/cafes/coffee1.png'
+import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 
 export function Home() {
   return (
-    <HeaderContainer>
-      <IntroContainer>
-        <TitleContainer>
-          <h2>Encontre o café perfeito para qualquer hora do dia</h2>
-          <p>
-            Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
-            hora
-          </p>
-        </TitleContainer>
-        <ItemsContainer>
-          <span>
-            <ShoppingCart size={20} weight="fill" id="shoppingcart" />
-            Compra simples e segura
-          </span>
-          <span>
-            <Package size={20} weight="fill" id="package" />
-            Embalagem mantém o café intacto
-          </span>
-          <span>
-            <Timer size={20} weight="fill" id="timer" />
-            Entrega rápida e rastreada
-          </span>
-          <span>
-            <Coffee size={20} weight="fill" id="coffee" />O café chega
-            fresquinho até você
-          </span>
-        </ItemsContainer>
-      </IntroContainer>
-      <ImgContainer>
-        <img src={titleCover} alt="" />
-      </ImgContainer>
-    </HeaderContainer>
+    <>
+      <Header />
+      <CoffeeList>
+        <h3>Nossos cafés</h3>
+        <List>
+          <CoffeeCard>
+            <img src={coffee1} alt="" />
+            <div className="tags">
+              <span>
+                <p>tradicional</p>
+              </span>
+            </div>
+            <h4>Expresso Tradicional</h4>
+            <p className="description">
+              O tradicional café feito com água quente e grãos moídos
+            </p>
+            <BuyContainer>
+              <span>
+                R$ <p>9,90</p>
+              </span>
+              <div className="actions">
+                <div>
+                  <button>
+                    <Minus className="icon" />
+                  </button>
+                  <p>1</p>
+                  <button>
+                    <Plus className="icon" />
+                  </button>
+                </div>
+              </div>
+              <ShoppingCart size={22} weight="fill" className="cart" />
+            </BuyContainer>
+          </CoffeeCard>
+        </List>
+      </CoffeeList>
+    </>
   )
 }
