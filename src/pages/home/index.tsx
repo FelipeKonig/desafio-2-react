@@ -29,11 +29,11 @@ export function Home() {
               <div className="actions">
                 <div>
                   <button>
-                    <Minus className="icon" />
+                    <Minus className="icon" weight="bold" />
                   </button>
                   <p>1</p>
                   <button>
-                    <Plus className="icon" />
+                    <Plus className="icon" weight="bold" />
                   </button>
                 </div>
               </div>

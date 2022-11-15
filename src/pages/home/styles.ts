@@ -20,6 +20,7 @@ export const CoffeeList = styled.div`
 export const List = styled.div`
   display: inline-flex;
   flex-direction: row;
+  gap: 1.5rem;
 `
 
 export const CoffeeCard = styled.div`
@@ -126,6 +127,7 @@ export const BuyContainer = styled.div`
     font-size: 0.875rem;
     line-height: 130%;
     margin-bottom: -0.625rem;
+    font-family: 'Baloo 2';
 
     p {
       font-weight: 800;
