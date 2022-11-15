@@ -18,17 +18,16 @@ export const CoffeeList = styled.div`
 `
 
 export const List = styled.div`
-  display: inline-flex;
-  flex-direction: row;
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
 `
 
 export const CoffeeCard = styled.div`
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 36px;
-  width: 15rem;
+  width: 17rem;
   height: 19rem;
-  margin-bottom: 10rem;
 
   img {
     width: 7.5rem;
@@ -48,9 +47,8 @@ export const CoffeeCard = styled.div`
 
   .tags > span {
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
 
+    text-align: center;
     margin-top: 0.5rem;
     padding: 0.25rem 0.5rem;
     width: 5rem;
