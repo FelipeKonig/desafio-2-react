@@ -1,7 +1,8 @@
 import { BuyContainer, CoffeeCardContainer } from './styles'
 
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CartContext, CoffeeCart } from '../../../contexts/CartContext'
 
 interface Coffee {
   id: number
@@ -13,6 +14,8 @@ interface Coffee {
 }
 
 export function CoffeeCard(coffee: Coffee) {
+  const { addNewCoffee } = useContext(CartContext)
+
   const [coffeeCount, setCoffeeCount] = useState(1)
 
   function handleAddCoffee() {
@@ -23,6 +26,17 @@ export function CoffeeCard(coffee: Coffee) {
     if (coffeeCount > 1) {
       setCoffeeCount(coffeeCount - 1)
     }
+  }
+
+  function handlePushToCart() {
+    const newCoffee: CoffeeCart = {
+      id: coffee.id,
+      img: coffee.img,
+      name: coffee.name,
+      price: coffee.price,
+      quantity: coffeeCount,
+    }
+    addNewCoffee(newCoffee)
   }
 
   return (
@@ -55,7 +69,7 @@ export function CoffeeCard(coffee: Coffee) {
               </button>
             </div>
           </div>
-          <button type="submit">
+          <button type="button" onClick={handlePushToCart}>
             <ShoppingCart size={22} weight="fill" className="cart" />
           </button>
         </BuyContainer>
