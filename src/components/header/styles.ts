@@ -16,6 +16,10 @@ export const HeaderContainer = styled.div`
     gap: 4px;
   }
 
+  a:focus {
+    box-shadow: none;
+  }
+
   span {
     background-color: ${(props) => props.theme['purple-light']};
     color: ${(props) => props.theme['purple-dark']};
@@ -25,7 +29,7 @@ export const HeaderContainer = styled.div`
     align-items: center;
   }
 
-  a {
+  #cart {
     position: absolute;
 
     background-color: ${(props) => props.theme['yellow-light']};

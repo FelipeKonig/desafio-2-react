@@ -24,14 +24,18 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <img src={logo} alt="" />
+      <div>
+        <NavLink to="/" title="Home">
+          <img src={logo} alt="" />
+        </NavLink>
+      </div>
       <nav>
         <span>
           <MapPin size={22} weight="fill" />
           Canoinhas, SC
         </span>
         <div>
-          <NavLink to="/checkout" title="Carrinho">
+          <NavLink id="cart" to="/checkout" title="Carrinho">
             <ShoppingCart size={22} weight="fill" />
           </NavLink>
           <span id="counter">{countCafes}</span>

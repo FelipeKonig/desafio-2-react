@@ -151,6 +151,7 @@ export const BuyContainer = styled.div`
     background: transparent;
     border: 0;
     color: ${(props) => props.theme.purple};
+    cursor: pointer;
   }
 
   .cart {

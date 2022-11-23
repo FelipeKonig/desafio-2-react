@@ -1,3 +1,12 @@
+import { Cart } from './cart'
+import { Form } from './form'
+import { CheckoutContainer } from './styles'
+
 export function Checkout() {
-  return <h1>Checkout</h1>
+  return (
+    <CheckoutContainer>
+      <Form />
+      <Cart />
+    </CheckoutContainer>
+  )
 }
