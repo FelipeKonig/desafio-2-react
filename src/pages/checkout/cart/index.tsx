@@ -1,24 +1,46 @@
+import { useContext, useEffect, useState } from 'react'
+import { CartContext } from '../../../contexts/CartContext'
 import { CoffeeItem } from './coffeeItem'
 import { CartContainer, CartValues, CoffeeCard } from './styles'
 
 export function Cart() {
+  const { cart } = useContext(CartContext)
+
+  const [totalCafesPrice, setTotalCartPrice] = useState(0)
+  const shipping = 3.5
+  const [totalPrice, setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    let totalPrice = 0
+
+    cart.forEach((coffee) => {
+      totalPrice += parseFloat(coffee.price) * coffee.quantity
+    })
+
+    setTotalCartPrice((state) => totalPrice)
+    setTotalPrice((state) => totalPrice + shipping)
+  }, [cart])
+
   return (
     <CartContainer>
       <h2>Cafés selecionados</h2>
       <CoffeeCard>
-        <CoffeeItem />
+        {cart.map((coffee) => {
+          return <CoffeeItem key={coffee.id} coffee={coffee} />
+        })}
+
         <CartValues>
           <div>
             <p>Total de itens</p>
-            <p className="price">29,70</p>
+            <p className="price">{totalCafesPrice.toFixed(2)}</p>
           </div>
           <div>
             <p>Entrega</p>
-            <p className="price">3,50</p>
+            <p className="price">{shipping.toFixed(2)}</p>
           </div>
           <div id="total">
             <p>Total</p>
-            <p className="price">33,20</p>
+            <p className="price">{totalPrice.toFixed(2)}</p>
           </div>
           <button>Confirmar Pedido</button>
         </CartValues>

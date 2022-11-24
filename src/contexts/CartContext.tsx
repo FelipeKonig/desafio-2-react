@@ -11,6 +11,9 @@ export interface CoffeeCart {
 interface CartContextProviderType {
   cart: CoffeeCart[]
   addNewCoffee: (data: CoffeeCart) => void
+  removeCoffee: (id: number) => void
+  increaseMoreCoffee: (id: number) => void
+  decreaseMoreCoffee: (id: number) => void
 }
 
 export const CartContext = createContext({} as CartContextProviderType)
@@ -21,6 +24,40 @@ interface CartContextProviderProps {
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cart, setCart] = useState<CoffeeCart[]>([])
+
+  function increaseMoreCoffee(id: number) {
+    setCart((state) =>
+      cart.map((coffee) => {
+        if (coffee.id === id) {
+          return {
+            ...coffee,
+            quantity: coffee.quantity + 1,
+          }
+        } else {
+          return { ...coffee }
+        }
+      }),
+    )
+  }
+
+  function decreaseMoreCoffee(id: number) {
+    setCart((state) =>
+      cart.map((coffee) => {
+        if (coffee.id === id) {
+          return {
+            ...coffee,
+            quantity: coffee.quantity - 1,
+          }
+        } else {
+          return { ...coffee }
+        }
+      }),
+    )
+  }
+
+  function removeCoffee(id: number) {
+    setCart((state) => cart.filter((coffee) => coffee.id !== id))
+  }
 
   function addNewCoffee(newCoffee: CoffeeCart) {
     console.log(cart)
@@ -48,7 +85,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   }
 
   return (
-    <CartContext.Provider value={{ cart, addNewCoffee }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addNewCoffee,
+        increaseMoreCoffee,
+        decreaseMoreCoffee,
+        removeCoffee,
+      }}
+    >
       {children}
     </CartContext.Provider>
   )

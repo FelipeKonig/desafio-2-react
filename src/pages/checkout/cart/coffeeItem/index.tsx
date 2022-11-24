@@ -1,46 +1,59 @@
 import { CoffeeItemContainer } from './styles'
 import { Minus, Plus, Trash } from 'phosphor-react'
 
-import coffee1 from '../../../../assets/cafes/coffee1.png'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CartContext, CoffeeCart } from '../../../../contexts/CartContext'
 
-export function CoffeeItem() {
-  const [coffeeCount, setCoffeeCount] = useState(1)
+interface CoffeeItemProps {
+  coffee: CoffeeCart
+}
 
-  function handleAddCoffee() {
+export function CoffeeItem({ coffee }: CoffeeItemProps) {
+  const [coffeeCount, setCoffeeCount] = useState(coffee.quantity)
+
+  const { increaseMoreCoffee, decreaseMoreCoffee, removeCoffee } =
+    useContext(CartContext)
+
+  function handleIncreaseMoreCoffee() {
     setCoffeeCount(coffeeCount + 1)
+    increaseMoreCoffee(coffee.id)
+  }
+
+  function handleDecreaseMoreCoffee() {
+    if (coffeeCount > 1) {
+      setCoffeeCount(coffeeCount - 1)
+      decreaseMoreCoffee(coffee.id)
+    }
   }
 
   function handleRemoveCoffee() {
-    if (coffeeCount > 1) {
-      setCoffeeCount(coffeeCount - 1)
-    }
+    removeCoffee(coffee.id)
   }
 
   return (
     <CoffeeItemContainer>
       <div>
-        <img src={coffee1} alt="" />
+        <img src={coffee.img} alt="" />
         <div id="details">
-          <p> Expresso Tradicional</p>
+          <p> {coffee.name}</p>
           <div id="actions">
             <div>
-              <button type="button" onClick={handleRemoveCoffee}>
+              <button type="button" onClick={handleDecreaseMoreCoffee}>
                 <Minus className="icon" weight="bold" />
               </button>
               <p>{coffeeCount}</p>
-              <button type="button" onClick={handleAddCoffee}>
+              <button type="button" onClick={handleIncreaseMoreCoffee}>
                 <Plus className="icon" weight="bold" />
               </button>
             </div>
-            <button type="button" id="remove">
+            <button type="button" id="remove" onClick={handleRemoveCoffee}>
               <Trash size={32} weight="fill" className="cart" />
               <span>Remover</span>
             </button>
           </div>
         </div>
       </div>
-      <p id="price">R$9,90</p>
+      <p id="price">R${coffee.price}</p>
     </CoffeeItemContainer>
   )
 }

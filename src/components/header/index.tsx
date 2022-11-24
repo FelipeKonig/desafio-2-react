@@ -14,11 +14,15 @@ export function Header() {
   useEffect(() => {
     if (cart.length > 0) {
       let count = 0
+
       cart.forEach((coffee) => (count += coffee.quantity))
 
       setCountCafes((state) => count)
 
       document.getElementById('counter')!.style.visibility = 'visible'
+    } else {
+      setCountCafes((state) => 0)
+      document.getElementById('counter')!.style.visibility = 'hidden'
     }
   }, [cart])
 
