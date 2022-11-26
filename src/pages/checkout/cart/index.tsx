@@ -11,7 +11,6 @@ export function Cart() {
   const [totalPrice, setTotalPrice] = useState(0)
 
   useEffect(() => {
-    console.log(cart.length)
     if (cart.length === 0) {
       document.getElementById('confirmOrder')!.style.cursor = 'no-drop'
     }

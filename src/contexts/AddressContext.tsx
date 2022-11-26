@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState } from 'react'
 
 export interface Address {
-  cep: number
+  cep: string
   rua: string
   numero: number
   complemento: string
@@ -26,7 +26,7 @@ export function AddressContextProvider({
   children,
 }: AddressContextProviderProps) {
   const [address, setAddress] = useState<Address>({
-    cep: 0,
+    cep: '',
     bairro: '',
     cidade: '',
     complemento: '',

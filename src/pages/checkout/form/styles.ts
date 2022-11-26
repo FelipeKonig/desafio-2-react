@@ -53,7 +53,8 @@ export const FormAddressContainer = styled.div`
   align-items: flex-start;
   gap: 1rem;
 
-  input {
+  input,
+  select {
     padding: 0.75rem;
     height: 2.625rem;
     background: ${(props) => props.theme['base-input']};
@@ -98,12 +99,21 @@ export const FormAddressContainer = styled.div`
 
     @media only screen and (max-width: 850px) {
       position: absolute;
-      right: 12rem;
+      right: 18rem;
     }
 
     @media only screen and (max-width: 760px) {
       position: absolute;
-      right: 5rem;
+      right: 12rem;
+    }
+
+    @media only screen and (max-width: 630px) {
+      position: absolute;
+      right: 7rem;
+    }
+    @media only screen and (max-width: 500px) {
+      position: absolute;
+      right: 3rem;
     }
   }
 

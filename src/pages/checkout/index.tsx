@@ -44,11 +44,9 @@ export function Checkout() {
   })
 
   function createNewAddress(data: newAddressFormData) {
-    console.log(cart.length)
     if (cart.length > 0) {
-      console.log(cart.length)
       const newAddress: Address = {
-        cep: parseInt(data.cep),
+        cep: data.cep,
         rua: data.rua,
         numero: parseInt(data.numero),
         complemento: data.complemento,
