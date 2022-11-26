@@ -86,6 +86,27 @@ export const FormAddressContainer = styled.div`
     width: 32.5rem;
   }
 
+  #opcional {
+    width: 2.9rem;
+    height: 1rem;
+    right: 5rem;
+    position: relative;
+
+    font-style: italic;
+    font-size: 0.75rem;
+    color: ${(props) => props.theme['base-label']};
+
+    @media only screen and (max-width: 850px) {
+      position: absolute;
+      right: 12rem;
+    }
+
+    @media only screen and (max-width: 760px) {
+      position: absolute;
+      right: 5rem;
+    }
+  }
+
   #cidade {
     width: 27rem;
   }

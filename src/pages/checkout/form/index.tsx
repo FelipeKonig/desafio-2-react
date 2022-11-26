@@ -5,6 +5,8 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { UseFormRegister } from 'react-hook-form'
+import { newAddressFormData } from '..'
 import {
   AddressCard,
   FormAddressContainer,
@@ -13,7 +15,11 @@ import {
   Title,
 } from './styles'
 
-export function Form() {
+interface FormProps {
+  register: UseFormRegister<newAddressFormData>
+}
+
+export function Form({ register }: FormProps) {
   return (
     <FormContainer>
       <h2>Complete o seu pedido</h2>
@@ -28,16 +34,49 @@ export function Form() {
           </span>
         </Title>
         <FormAddressContainer>
-          <input id="cep" type="text" placeholder="CEP" />
-          <input id="rua" type="text" placeholder="Rua" />
+          <input
+            id="cep"
+            type="number"
+            placeholder="CEP"
+            {...register('cep')}
+            min="1"
+            required
+          />
+          <input
+            id="rua"
+            type="text"
+            placeholder="Rua"
+            {...register('rua')}
+            required
+          />
           <div>
-            <input type="text" placeholder="Número" />
-            <input id="complemento" type="text" placeholder="Complemento" />
+            <input
+              type="number"
+              placeholder="Número"
+              {...register('numero')}
+              min="1"
+              required
+            />
+            <div>
+              <input
+                id="complemento"
+                type="text"
+                placeholder="Complemento"
+                {...register('complemento')}
+              />
+              <span id="opcional">Opcional</span>
+            </div>
           </div>
           <div>
-            <input type="text" placeholder="Bairro" />
-            <input id="cidade" type="text" placeholder="Cidade" />
-            <input id="uf" type="text" placeholder="UF" />
+            <input type="text" placeholder="Bairro" {...register('bairro')} />
+            <input
+              id="cidade"
+              type="text"
+              placeholder="Cidade"
+              {...register('cidade')}
+              required
+            />
+            <input id="uf" type="text" placeholder="UF" {...register('uf')} />
           </div>
         </FormAddressContainer>
       </AddressCard>
@@ -52,19 +91,37 @@ export function Form() {
           </span>
         </Title>
         <div id="paymentForm">
-          <input type="radio" id="credito" name="payment" value="credito" />
+          <input
+            type="radio"
+            id="credito"
+            value="credito"
+            required
+            {...register('pagamento')}
+          />
           <label htmlFor="credito">
             <CreditCard className="purpleIcon" size={22} weight="regular" />
             Cartão de crédito
           </label>
 
-          <input type="radio" id="debito" name="payment" value="debito" />
+          <input
+            type="radio"
+            id="debito"
+            value="debito"
+            required
+            {...register('pagamento')}
+          />
           <label htmlFor="debito">
             <Bank className="purpleIcon" size={22} weight="regular" />
             Cartão de débito
           </label>
 
-          <input type="radio" id="dinheiro" name="payment" value="dinheiro" />
+          <input
+            type="radio"
+            id="dinheiro"
+            value="dinheiro"
+            required
+            {...register('pagamento')}
+          />
           <label htmlFor="dinheiro">
             <Money className="purpleIcon" size={22} weight="regular" />
             Dinheiro

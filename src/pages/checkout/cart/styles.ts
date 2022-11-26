@@ -19,7 +19,7 @@ export const CoffeeCard = styled.div`
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 44px;
 
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 465px) {
     max-width: 95%;
   }
 `

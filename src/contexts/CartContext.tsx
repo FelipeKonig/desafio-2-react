@@ -60,8 +60,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   }
 
   function addNewCoffee(newCoffee: CoffeeCart) {
-    console.log(cart)
-
     if (containsCoffeeInCart(newCoffee)) {
       setCart((state) =>
         cart.map((coffee) => {

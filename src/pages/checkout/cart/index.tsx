@@ -11,6 +11,11 @@ export function Cart() {
   const [totalPrice, setTotalPrice] = useState(0)
 
   useEffect(() => {
+    console.log(cart.length)
+    if (cart.length === 0) {
+      document.getElementById('confirmOrder')!.style.cursor = 'no-drop'
+    }
+
     let totalPrice = 0
 
     cart.forEach((coffee) => {
@@ -42,7 +47,9 @@ export function Cart() {
             <p>Total</p>
             <p className="price">{totalPrice.toFixed(2)}</p>
           </div>
-          <button>Confirmar Pedido</button>
+          <button id="confirmOrder" type="submit">
+            Confirmar Pedido
+          </button>
         </CartValues>
       </CoffeeCard>
     </CartContainer>

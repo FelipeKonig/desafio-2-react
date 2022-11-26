@@ -20,9 +20,11 @@ export function Header() {
       setCountCafes((state) => count)
 
       document.getElementById('counter')!.style.visibility = 'visible'
+      document.getElementById('cart')!.style.pointerEvents = 'all'
     } else {
       setCountCafes((state) => 0)
       document.getElementById('counter')!.style.visibility = 'hidden'
+      document.getElementById('cart')!.style.pointerEvents = 'none'
     }
   }, [cart])
 
