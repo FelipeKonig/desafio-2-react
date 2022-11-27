@@ -14,6 +14,7 @@ interface CartContextProviderType {
   removeCoffee: (id: number) => void
   increaseMoreCoffee: (id: number) => void
   decreaseMoreCoffee: (id: number) => void
+  cleanCart: () => void
 }
 
 export const CartContext = createContext({} as CartContextProviderType)
@@ -78,6 +79,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
   }
 
+  function cleanCart() {
+    return setCart((state) => [])
+  }
+
   function containsCoffeeInCart(newCoffee: CoffeeCart) {
     return cart.find((coffee) => coffee.id === newCoffee.id) && cart.length > 0
   }
@@ -90,6 +95,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         increaseMoreCoffee,
         decreaseMoreCoffee,
         removeCoffee,
+        cleanCart,
       }}
     >
       {children}

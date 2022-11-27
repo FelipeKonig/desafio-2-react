@@ -140,7 +140,7 @@ export function Form({ register }: FormProps) {
           <input
             type="radio"
             id="credito"
-            value="credito"
+            value="Cartão de crédito"
             required
             {...register('pagamento')}
           />
@@ -152,7 +152,7 @@ export function Form({ register }: FormProps) {
           <input
             type="radio"
             id="debito"
-            value="debito"
+            value="Cartão de debito"
             required
             {...register('pagamento')}
           />
@@ -164,7 +164,7 @@ export function Form({ register }: FormProps) {
           <input
             type="radio"
             id="dinheiro"
-            value="dinheiro"
+            value="Dinheiro"
             required
             {...register('pagamento')}
           />
