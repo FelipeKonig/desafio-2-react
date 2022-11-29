@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 
 export interface CoffeeCart {
   id: number
@@ -24,7 +24,21 @@ interface CartContextProviderProps {
 }
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cart, setCart] = useState<CoffeeCart[]>([])
+  const [cart, setCart] = useState<CoffeeCart[]>(() => {
+    const storedStateAsJSON = localStorage.getItem(
+      '@felipe-delivery:cart-1.0.0',
+    )
+    if (storedStateAsJSON) {
+      return JSON.parse(storedStateAsJSON)
+    } else {
+      return []
+    }
+  })
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cart)
+    localStorage.setItem('@felipe-delivery:cart-1.0.0', stateJSON)
+  }, [cart])
 
   function increaseMoreCoffee(id: number) {
     setCart((state) =>
